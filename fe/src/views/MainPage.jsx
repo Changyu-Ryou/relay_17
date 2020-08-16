@@ -31,10 +31,21 @@ const MainPage = () => {
 
   const postFaceImg = async (e) => {
     const imgFile = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      const imageFeild = document.getElementById("image");
+      imageFeild.src = reader.result;
+    };
+    reader.readAsDataURL(e.target.files[0]);
+
     const fd = new FormData();
-    fd.append('image', imgFile);
+    fd.append("image", imgFile);
     const faceInfo = await postFace(fd);
-    console.log(faceInfo);
+
+    if (!faceInfo.faces.length) return;
+    const rois = faceInfo.faces.map((f) => f.roi);
+    console.log(rois);
+    document.getElementById("rois").innerText = JSON.stringify(rois);
   };
 
   return (
@@ -52,8 +63,11 @@ const MainPage = () => {
                 </Profile>
                 <SchoolList>School List</SchoolList>
               </MainLeft>
-              <MainCenter>Center
-              <input type="file" onChange={postFaceImg}/>
+              <MainCenter>
+                <input type="file" onChange={postFaceImg} />
+                <br />
+                <img id="image" />
+                <textarea id="rois"></textarea>
               </MainCenter>
               <MainRight>
                 <ChatBot
