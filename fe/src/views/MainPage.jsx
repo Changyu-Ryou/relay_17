@@ -8,7 +8,12 @@ import ChatBot from "../components/ChatBot/ChatBot";
 const MainPage = () => {
   const { userName } = useParams();
   const [chatbotOpen, setChatbotOpen] = useState(false);
-  const [userInfo, setUserInfo] = useState({ name: "", school: "", favors: "", graduatedYear: null });
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    school: "",
+    favors: "",
+    graduatedYear: null,
+  });
 
   const getUserHandler = async () => {
     const user = await getUser(userName);
@@ -40,8 +45,13 @@ const MainPage = () => {
               </MainLeft>
               <MainCenter>Center</MainCenter>
               <MainRight>
-                <ChatBot isOpen={chatbotOpen} onSetChatbotOpen={onSetChatbotOpen} />
-                <ChatBotButton onClick={onSetChatbotOpen}>CHAT BOT</ChatBotButton>
+                <ChatBot
+                  isOpen={chatbotOpen}
+                  onSetChatbotOpen={onSetChatbotOpen}
+                />
+                <ChatBotButton onClick={onSetChatbotOpen}>
+                  CHAT BOT
+                </ChatBotButton>
               </MainRight>
             </MainBody>
             <MainFooter>

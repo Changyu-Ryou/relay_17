@@ -23,6 +23,7 @@ router.get("/:name", function (req, res, next) {
   let user = [];
   connection.query("SELECT * from students", (error, rows, fields) => {
     user = rows.find((u) => u.name === req.params.name);
+    console.log(user);
     res.json(user);
   });
 });
@@ -32,20 +33,20 @@ router.get("/:name/friends", function (req, res, next) {
   // 게시물 작성자 이름 받아서
   let name = req.params.name;
   console.log(name);
-  let list = [];
+  let friends = [];
   // 작성자와 같은 학교인 회원들 리스트 return
   const sql = `SELECT name FROM students WHERE school = (SELECT school FROM students WHERE name = "${name}");`;
-  connection.query(sql, (err, posts) => {
-    if (err) {
+  connection.query(sql, (error, posts) => {
+    if (error) {
       // console.log(err);
-      res.json({ success: false, err });
+      res.json({ success: false, error });
     } else {
       posts.forEach((v) => {
-        if (v.name !== name) list.push(v.name);
+        if (v.name !== name) friends.push(v.name);
       });
     }
     // console.log(list);
-    res.json({ success: true, list });
+    res.json({ success: true, friends });
   });
 });
 
@@ -68,7 +69,7 @@ router.post("/insert", function (req, res, next) {
   console.log(req.body);
   console.log(req.graduatedYear);
   let params = [name, school, favors, graduatedYear];
-  connection.query(sql, params, (err, rows, fields) => {
+  connection.query(sql, params, (error, rows, fields) => {
     res.send(rows);
   });
 });
