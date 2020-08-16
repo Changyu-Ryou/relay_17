@@ -1,6 +1,17 @@
 import axios from "axios";
 import URL from "../constants/url.js";
 
+export const postFace = (fd) => {
+  return axios
+  .post(URL.face, fd)
+  .then((response) => {
+    return response.data;
+  })
+  .catch((error) => {
+    return error;
+  });
+}
+
 export const postLogin = (params) => {
   axios
     .post(URL.login, params)
