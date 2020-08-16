@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { getUser } from "../util/ReqMessage";
 import ChatBot from "../components/ChatBot/ChatBot";
+import { postFace } from "../util/ReqMessage";
 
 const MainPage = () => {
   const { userName } = useParams();
@@ -23,6 +24,14 @@ const MainPage = () => {
     setChatbotOpen(!chatbotOpen);
   };
 
+  const postFaceImg = async (e) => {
+    const imgFile = e.target.files[0];
+    const fd = new FormData();
+    fd.append('image', imgFile);
+    const faceInfo = await postFace(fd);
+    console.log(faceInfo);
+  };
+
   return (
     <>
       {userInfo && (
@@ -38,7 +47,9 @@ const MainPage = () => {
                 </Profile>
                 <SchoolList>School List</SchoolList>
               </MainLeft>
-              <MainCenter>Center</MainCenter>
+              <MainCenter>Center
+              <input type="file" onChange={postFaceImg}/>
+              </MainCenter>
               <MainRight>
                 <ChatBot isOpen={chatbotOpen} onSetChatbotOpen={onSetChatbotOpen} />
                 <ChatBotButton onClick={onSetChatbotOpen}>CHAT BOT</ChatBotButton>
