@@ -8,6 +8,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var chatbotRouter = require("./routes/chatbot");
 var boardRouter = require("./routes/board");
+var faceRouter = require("./routes/face");
 
 var app = express();
 const cors = require("cors");
@@ -27,6 +28,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/chatbot", chatbotRouter);
 app.use("/board", boardRouter);
+app.use("/face", faceRouter);
 
 app.post("/postTest", function (req, res) {
   console.log(req.body);

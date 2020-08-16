@@ -13,5 +13,5 @@ export default URL = {
   board: "http://localhost:5000/boards",
   tag: "http://localhost:5000/boards/tags",
   chatbot: "http://101.101.219.177/chatbot",
-  face: "http://127.0.0.1/face"
+  face: "http://localhost:5000/face",
 };
