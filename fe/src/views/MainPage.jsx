@@ -4,11 +4,17 @@ import styled from "styled-components";
 
 import { getUser } from "../util/ReqMessage";
 import ChatBot from "../components/ChatBot/ChatBot";
+import { postFace } from "../util/ReqMessage";
 
 const MainPage = () => {
   const { userName } = useParams();
   const [chatbotOpen, setChatbotOpen] = useState(false);
-  const [userInfo, setUserInfo] = useState({ name: "", school: "", favors: "", graduatedYear: null });
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    school: "",
+    favors: "",
+    graduatedYear: null,
+  });
 
   const getUserHandler = async () => {
     const user = await getUser(userName);
@@ -21,6 +27,25 @@ const MainPage = () => {
 
   const onSetChatbotOpen = () => {
     setChatbotOpen(!chatbotOpen);
+  };
+
+  const postFaceImg = async (e) => {
+    const imgFile = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      const imageFeild = document.getElementById("image");
+      imageFeild.src = reader.result;
+    };
+    reader.readAsDataURL(e.target.files[0]);
+
+    const fd = new FormData();
+    fd.append("image", imgFile);
+    const faceInfo = await postFace(fd);
+
+    if (!faceInfo.faces.length) return;
+    const rois = faceInfo.faces.map((f) => f.roi);
+    console.log(rois);
+    document.getElementById("rois").innerText = JSON.stringify(rois);
   };
 
   return (
@@ -38,10 +63,20 @@ const MainPage = () => {
                 </Profile>
                 <SchoolList>School List</SchoolList>
               </MainLeft>
-              <MainCenter>Center</MainCenter>
+              <MainCenter>
+                <input type="file" onChange={postFaceImg} />
+                <br />
+                <img id="image" />
+                <textarea id="rois"></textarea>
+              </MainCenter>
               <MainRight>
-                <ChatBot isOpen={chatbotOpen} onSetChatbotOpen={onSetChatbotOpen} />
-                <ChatBotButton onClick={onSetChatbotOpen}>CHAT BOT</ChatBotButton>
+                <ChatBot
+                  isOpen={chatbotOpen}
+                  onSetChatbotOpen={onSetChatbotOpen}
+                />
+                <ChatBotButton onClick={onSetChatbotOpen}>
+                  CHAT BOT
+                </ChatBotButton>
               </MainRight>
             </MainBody>
             <MainFooter>
