@@ -37,4 +37,4 @@ http://101.101.219.177
 
 - [1주차](https://github.com/boostcamp-2020/relay_17/wiki/1%EC%A3%BC%EC%B0%A8-%EC%9D%98%EA%B2%AC-%EB%AA%A9%EB%A1%9D)
 - [2주차](https://github.com/boostcamp-2020/relay_17/wiki/2%EC%A3%BC%EC%B0%A8-%EC%A7%84%ED%96%89-%EC%82%AC%ED%95%AD)
-- [3주차](wiki주소올리기)
+- [3주차](https://github.com/boostcamp-2020/relay_17/wiki/3%EC%A3%BC%EC%B0%A8-%EC%A7%84%ED%96%89-%EC%82%AC%ED%95%AD)
