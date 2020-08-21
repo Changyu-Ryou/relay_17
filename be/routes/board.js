@@ -1,15 +1,6 @@
 var express = require("express");
 var router = express.Router();
 
-const mysql = require("mysql");
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "relay17",
-  database: "ilovedschool",
-});
-connection.connect();
-
 router.post("/", function (req, res, next) {
   let sql =
     "INSERT INTO board(title, content, user, image) VALUES (?, ?, ?, ?)";

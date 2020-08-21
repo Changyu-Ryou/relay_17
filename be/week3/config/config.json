@@ -3,7 +3,7 @@
     { 
         "username": "root", 
         "password": "relay17", 
-        "database": "ilovedchool", 
+        "database": "ilovedschool", 
         "host": "127.0.0.1", 
         "dialect": "mysql", 
         "timezone": "+09:00",
