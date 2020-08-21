@@ -1,6 +1,5 @@
 const mysql = require('mysql');
 const env = process.env.NODE_ENV || 'development';
-const config2 = require('../../../../../config.json')[env];
 const config = require('../config/config.json')[env];
 
 const db_info = {
