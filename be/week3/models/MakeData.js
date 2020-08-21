@@ -6,7 +6,7 @@ const config = require('../config/config.json')[env];
 const db_info = {
     host: config.host,
     user: config.username,
-    password: config2.password,
+    password: config.password,
     database: config.database
 }
 const nameArr = [
