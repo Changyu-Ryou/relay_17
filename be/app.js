@@ -3,15 +3,18 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var chatbotRouter = require("./routes/chatbot");
-var boardRouter = require("./routes/board");
-var faceRouter = require("./routes/face");
-
+const sequelize = require('./week3/models').sequelize;
 var app = express();
+sequelize.sync();
 const cors = require("cors");
+
+// var indexRouter = require("./routes/index");
+var usersRouter = require("./routes/users");
+// var chatbotRouter = require("./routes/chatbot");
+// var boardRouter = require("./routes/board");
+// var faceRouter = require("./routes/face");
+
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -24,11 +27,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "/build")));
 app.use(cors());
-app.use("/", indexRouter);
+// app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/chatbot", chatbotRouter);
-app.use("/board", boardRouter);
-app.use("/face", faceRouter);
+// app.use("/chatbot", chatbotRouter);
+// app.use("/board", boardRouter);
+// app.use("/face", faceRouter);
 
 app.post("/postTest", function (req, res) {
   console.log(req.body);

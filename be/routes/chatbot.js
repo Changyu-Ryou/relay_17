@@ -3,14 +3,7 @@ var router = express.Router();
 const path = require('path');
 
 const { PythonShell } = require('python-shell');//for chatbot.py
-const mysql = require('mysql');
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'relay17',
-  database: 'ilovedschool'
-});
-connection.connect();
+
 // chatbot test
 router.get("/:msg/:school", function (req, res, next) {
   var options = {

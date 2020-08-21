@@ -1,0 +1,12 @@
+{ 
+    "development": 
+    { 
+        "username": "root", 
+        "password": "relay17", 
+        "database": "ilovedchool", 
+        "host": "127.0.0.1", 
+        "dialect": "mysql", 
+        "timezone": "+09:00",
+        "operatorAliases" : false 
+    } 
+}
