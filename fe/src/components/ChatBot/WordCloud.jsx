@@ -17,7 +17,7 @@ const MessageBox = styled.div`
 `;
 
 const Message = styled.div`
-  background-color: ${(props) => (props.isUser ? "#4fd2c2" : "#ddd")};
+  background-color: ${(props) => (props.isUser ? "#fd79a8" : "#ddd")};
   float: inherit;
   margin: 5px;
   padding: 4px 10px;
