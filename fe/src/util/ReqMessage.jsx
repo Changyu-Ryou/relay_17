@@ -109,3 +109,16 @@ export const getTags = (board_id) => {
     })
     .catch((error) => error);
 };
+
+
+export const getRecommand = (userInfo) => {
+  console.log(userInfo);
+  return axios
+    .post(URL.recommand,userInfo)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+};
