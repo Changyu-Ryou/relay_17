@@ -21,8 +21,20 @@ const MainPage = () => {
   const getUserHandler = async () => {
     const user = await getUser(userName);
     setUserInfo(user);
-    const reqRecommand = await getRecommand(user);
-    setRecommandInfo(reqRecommand);
+    const reqRecommand = await getRecommand({id: (Math.floor(Math.random()*10)+1).toString()}); //id 값은 랜덤
+    //setRecommandInfo(reqRecommand);
+    setRecommandInfo([{name: "",
+    school: "",
+    favors: ""}
+    ,{name: "",
+    school: "",
+    favors: ""}
+    ,{name: "",
+    school: "",
+    favors: ""}
+    ,{name: "",
+    school: "",
+    favors: ""}]);
   };
 
   useEffect(() => {
@@ -55,7 +67,7 @@ const MainPage = () => {
 
   const renderCards = RecommandInfo.map((user, index) => {
 
-    return <div>hellow</div>
+    return <div>hello world</div>
 
   })
 
@@ -80,7 +92,7 @@ const MainPage = () => {
                 <br />
                 <img id="image" />
                 <textarea id="rois"></textarea>
-                {/* {renderCards} */}
+                {renderCards}
               </MainCenter>
               <MainRight>
                 <ChatBot
