@@ -115,7 +115,7 @@ export const getRecommand = (userInfo) => {
   return axios
     .get(`${URL.recommand}/${userInfo.id}`)
     .then((response) => {
-      return response.data;
+      return response.data.data;
     })
     .catch((error) => {
       return error;

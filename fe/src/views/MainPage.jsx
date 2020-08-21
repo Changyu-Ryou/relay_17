@@ -58,7 +58,7 @@ const MainPage = () => {
       <Card>
        <div>{user.name}</div>
        <div>{user.school}</div>
-       <div>{user.favors}</div>
+       <div>{user.graduatedYear}</div>
       </Card>
     )
 
