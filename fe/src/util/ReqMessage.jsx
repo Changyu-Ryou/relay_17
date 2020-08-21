@@ -112,9 +112,8 @@ export const getTags = (board_id) => {
 
 
 export const getRecommand = (userInfo) => {
-  console.log(userInfo);
   return axios
-    .post(URL.recommand,userInfo)
+    .get(`${URL.recommand}/${userInfo.id}`)
     .then((response) => {
       return response.data;
     })

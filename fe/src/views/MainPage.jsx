@@ -22,39 +22,7 @@ const MainPage = () => {
     const user = await getUser(userName);
     setUserInfo(user);
     const reqRecommand = await getRecommand({id: (Math.floor(Math.random()*10)+1).toString()}); //id 값은 랜덤
-    //setRecommandInfo(reqRecommand);
-    setRecommandInfo([
-      {
-        name: "김부캠",
-        school: "1고등학교",
-        favors: "게임"
-      }
-      , {
-        name: "이부캠",
-        school: "2고등학교",
-        favors: "노래"
-      }
-      , {
-        name: "박부캠",
-        school: "3고등학교",
-        favors: "개발"
-      }
-      , {
-        name: "최부캠",
-        school: "4고등학교",
-        favors: "독서"
-      }
-      , {
-        name: "최부캠",
-        school: "4고등학교",
-        favors: "독서"
-      }
-      , {
-        name: "최부캠",
-        school: "4고등학교",
-        favors: "독서"
-      }]
-    );
+    setRecommandInfo(reqRecommand);
   };
 
   useEffect(() => {
