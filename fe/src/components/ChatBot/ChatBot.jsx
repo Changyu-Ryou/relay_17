@@ -78,7 +78,7 @@ const TitleBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #4fd2c2;
+  background-color: #fd79a8;
   border-radius: 10px 10px 0 0;
 `;
 
@@ -133,7 +133,7 @@ const InputButton = styled.button`
   height: 70%;
   width: 20%;
   color: white;
-  background: #4fd2c2;
+  background: #fd79a8;
   border: none;
   border-radius: 5px;
   font-size: small;

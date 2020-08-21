@@ -23,18 +23,38 @@ const MainPage = () => {
     setUserInfo(user);
     const reqRecommand = await getRecommand({id: (Math.floor(Math.random()*10)+1).toString()}); //id 값은 랜덤
     //setRecommandInfo(reqRecommand);
-    setRecommandInfo([{name: "",
-    school: "",
-    favors: ""}
-    ,{name: "",
-    school: "",
-    favors: ""}
-    ,{name: "",
-    school: "",
-    favors: ""}
-    ,{name: "",
-    school: "",
-    favors: ""}]);
+    setRecommandInfo([
+      {
+        name: "김부캠",
+        school: "1고등학교",
+        favors: "게임"
+      }
+      , {
+        name: "이부캠",
+        school: "2고등학교",
+        favors: "노래"
+      }
+      , {
+        name: "박부캠",
+        school: "3고등학교",
+        favors: "개발"
+      }
+      , {
+        name: "최부캠",
+        school: "4고등학교",
+        favors: "독서"
+      }
+      , {
+        name: "최부캠",
+        school: "4고등학교",
+        favors: "독서"
+      }
+      , {
+        name: "최부캠",
+        school: "4고등학교",
+        favors: "독서"
+      }]
+    );
   };
 
   useEffect(() => {
@@ -66,8 +86,13 @@ const MainPage = () => {
 
 
   const renderCards = RecommandInfo.map((user, index) => {
-
-    return <div>hello world</div>
+    return (
+      <Card>
+       <div>{user.name}</div>
+       <div>{user.school}</div>
+       <div>{user.favors}</div>
+      </Card>
+    )
 
   })
 
@@ -88,11 +113,15 @@ const MainPage = () => {
                 <SchoolList>School List</SchoolList>
               </MainLeft>
               <MainCenter>
-              <input type="file" onChange={postFaceImg} />
-                <br />
-                <img id="image" />
-                <textarea id="rois"></textarea>
-                {renderCards}
+                <ImageCenter>
+                  <input type="file" onChange={postFaceImg} />
+                  <br />
+                  <img id="image" />
+                  <textarea id="rois"></textarea>
+                </ImageCenter>
+                <Recommend>
+                  {renderCards}
+                </Recommend>
               </MainCenter>
               <MainRight>
                 <ChatBot
@@ -105,7 +134,9 @@ const MainPage = () => {
               </MainRight>
             </MainBody>
             <MainFooter>
-              <div>Footer</div>
+              <div>
+                ??? : 첫번째 발표라 떨린다 ㅜㅜ
+              </div>
             </MainFooter>
           </Wrapper>
         </>
@@ -119,7 +150,7 @@ const Wrapper = styled.div`
 `;
 
 const MainBody = styled.div`
-  height: 550px;
+  height: 800px;
   display: flex;
 `;
 
@@ -152,6 +183,7 @@ const SchoolList = styled.div`
 `;
 
 const MainCenter = styled.div`
+  display: flex;
   padding: 20px;
   width: 55%;
   background-color: #dddddd;
@@ -169,16 +201,36 @@ const MainRight = styled.div`
 const MainFooter = styled.div`
   padding: 20px;
   height: 50px;
-  background-color: #4fd2c2;
+  background-color: #fd79a8;
+  text-align: center;
 `;
 
 const ChatBotButton = styled.button`
   height: 10%;
   color: white;
-  background: #4fd2c2;
+  background: #fd79a8;
   border: none;
   border-radius: 5px;
   margin-top: 14px;
 `;
+
+const ImageCenter = styled.div`
+
+`
+
+const Recommend = styled.div`
+  background: #fd79a8;
+  margin-left: 600px;
+  width: 150px;
+  text-align: center;
+  border-radius: 5px;
+`
+
+const Card = styled.div`
+  border: solid white 1px;
+  border-radius: 5px;
+  background : white;
+  margin: 5px;
+`
 
 export default MainPage;
