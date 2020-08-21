@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
-import { getUser } from "../util/ReqMessage";
+import { getUser, getRecommand } from "../util/ReqMessage";
 import ChatBot from "../components/ChatBot/ChatBot";
 import { postFace } from "../util/ReqMessage";
 
@@ -16,9 +16,25 @@ const MainPage = () => {
     graduatedYear: null,
   });
 
+  const [RecommandInfo, setRecommandInfo] = useState([]);
+
   const getUserHandler = async () => {
     const user = await getUser(userName);
     setUserInfo(user);
+    const reqRecommand = await getRecommand({id: (Math.floor(Math.random()*10)+1).toString()}); //id 값은 랜덤
+    //setRecommandInfo(reqRecommand);
+    setRecommandInfo([{name: "",
+    school: "",
+    favors: ""}
+    ,{name: "",
+    school: "",
+    favors: ""}
+    ,{name: "",
+    school: "",
+    favors: ""}
+    ,{name: "",
+    school: "",
+    favors: ""}]);
   };
 
   useEffect(() => {
@@ -48,6 +64,14 @@ const MainPage = () => {
     document.getElementById("rois").innerText = JSON.stringify(rois);
   };
 
+
+  const renderCards = RecommandInfo.map((user, index) => {
+
+    return <div>hello world</div>
+
+  })
+
+
   return (
     <>
       {userInfo && (
@@ -64,10 +88,11 @@ const MainPage = () => {
                 <SchoolList>School List</SchoolList>
               </MainLeft>
               <MainCenter>
-                <input type="file" onChange={postFaceImg} />
+              <input type="file" onChange={postFaceImg} />
                 <br />
                 <img id="image" />
                 <textarea id="rois"></textarea>
+                {renderCards}
               </MainCenter>
               <MainRight>
                 <ChatBot
